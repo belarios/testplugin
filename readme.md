@@ -1,5 +1,8 @@
 ﻿Everquest ACT Plugin
 ====================
+
+Based on https://github.com/ravahn/EQ_ACT_Plugin
+
 This repository contains a rudimentary ACT Plugin that will parse Everquest combat log data.
 
 At this point it only records damage, it does not record healing.  It can handle most forms of damage, including DoTs, but has only been tested with low level characters.  
