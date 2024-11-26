@@ -35,13 +35,9 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Create Directory
-      run: "New-Item -Path "D:\ACTv3" -ItemType Directory -Force"
-
     - name: Download ACT
+      run: "New-Item -Path "D:\ACTv3" -ItemType Directory -Force"
       run: "Invoke-WebRequest -Uri 'https://advancedcombattracker.com/download.php?id=57' -OutFile 'D:\\ACTv3\\ACTv3.zip'"
-
-    - name: Unzip ACT
       run: "Expand-Archive 'D:\\ACTv3.zip' -DestinationPath 'D:\\ACTv3' -Force"
 
     - name: Build
