@@ -44,7 +44,7 @@ jobs:
     - name: Unzip ACT
       run: "Expand-Archive 'D:\\ACTv3\\ACTv3.zip' -DestinationPath 'D:\\ACTv3'\\ -Force"
       
-    - view1:
+    - name: check
       run: "dir D:\\ACTv3\\"
 
     - name: Build
