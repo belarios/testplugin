@@ -38,7 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
-      <HintPath>D:\a\testplugin\testplugin\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
+      <HintPath>D:\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

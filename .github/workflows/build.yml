@@ -36,7 +36,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Download ACT
-      run: "Invoke-WebRequest -Uri 'https://advancedcombattracker.com/download.php?id=57' -OutFile 'D:\\ACTv3.zip'"
+      run: "Invoke-WebRequest -Uri 'https://advancedcombattracker.com/download.php?id=57' -OutFile 'D:\\ACTv3.zip' | Select-Object -Expand Content"
 
     - name: Unzip ACT
       run: "Expand-Archive 'D:\\ACTv3.zip' -DestinationPath 'D:\\' -Force"
