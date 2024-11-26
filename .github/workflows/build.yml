@@ -54,7 +54,6 @@ jobs:
     - name: Publish
       uses: ncipollo/release-action@v1
       with:
-        removeArtifacts: true
         artifacts: "D:\\bin\\EQ_ACT_Plugin.dll"
         # tag: ${{ steps.date.outputs.date }}
         tag: $DATETIME
