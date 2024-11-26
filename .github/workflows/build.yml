@@ -42,7 +42,7 @@ jobs:
       run: "dir D:\\"
 
     - name: Unzip ACT
-      run: "Expand-Archive 'D:\\ACTv3.zip' -DestinationPath 'D:\\' -Force"
+      run: "Expand-Archive 'D:\\ACTv3.zip' -DestinationPath 'D:\\ACTv3' -Force"
 
     - name: view2
       run: "dir D:\\"
