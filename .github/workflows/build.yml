@@ -36,7 +36,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Download ACT
-      run: "Invoke-WebRequest -Uri 'https://advancedcombattracker.com/download.php?id=57' -OutFile 'D:\\ACTv3.zip'"
+      run: "Invoke-WebRequest -Uri 'https://advancedcombattracker.com/download.php?id=57' -OutFile 'D:\\ACTv3\\ACTv3.zip'"
 
     - name: Unzip ACT
       run: "Expand-Archive 'D:\\ACTv3.zip' -DestinationPath 'D:\\ACTv3' -Force"
@@ -44,7 +44,7 @@ jobs:
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} /p:OutputPath=D:\a\EQ_ACT_Plugin\bin
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} /p:OutputPath=D:\bin
 
     - name: Get current date
       id: date
