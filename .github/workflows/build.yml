@@ -39,7 +39,7 @@ jobs:
       run: |
         "New-Item -Path "D:\ACTv3" -ItemType Directory -Force"
         "Invoke-WebRequest -Uri 'https://advancedcombattracker.com/download.php?id=57' -OutFile 'D:\\ACTv3\\ACTv3.zip'"
-        "Expand-Archive 'D:\\ACTv3.zip' -DestinationPath 'D:\\ACTv3' -Force"
+        "Expand-Archive 'D:\\ACTv3\\ACTv3.zip' -DestinationPath 'D:\\ACTv3' -Force"
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
