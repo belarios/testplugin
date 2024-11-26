@@ -35,6 +35,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
       <HintPath>D:\a\EQ_ACT_Plugin\EQ_ACT_Plugin\Advanced Combat Tracker\Advanced Combat Tracker.exe</HintPath>
