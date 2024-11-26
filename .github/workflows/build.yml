@@ -45,5 +45,5 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         removeArtifacts: true
-        artifacts: "D:\\EQ_ACT_Plugin.dll"
+        artifacts: "D:\\bin\\EQ_ACT_Plugin.dll"
         tag: ${{ github.event.repository.updated_at}}
