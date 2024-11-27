@@ -55,7 +55,7 @@ jobs:
     - name: Get current date
       id: date
 #      run: echo "::set-output name=date::$(date +'%Y-%m-%d-%H-%M-%S')"
-      run: echo "DATETIME=$(date +'%Y-%m-%d-%H-%M-%S')" >> $GITHUB_ENV
+      run: echo "DATETIME=`date +'%Y-%m-%d-%H-%M-%S'`" >> $GITHUB_ENV
 
     - name: Publish
       uses: ncipollo/release-action@v1
