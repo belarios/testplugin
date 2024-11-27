@@ -57,9 +57,12 @@ jobs:
       # run: echo "DATETIME=`date +'%Y-%m-%d-%H-%M-%S'`" >> $GITHUB_ENV
       run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
+    - name: env
+      run: env
+
     - name: Publish
       uses: ncipollo/release-action@v1
       with:
         artifacts: "D:\\bin\\EQ_ACT_Plugin.dll"
         # tag: ${{ steps.date.outputs.date }}
-        tag: $NOW
+        tag: $env.NOW
