@@ -65,4 +65,4 @@ jobs:
       with:
         artifacts: "D:\\bin\\EQ_ACT_Plugin.dll"
         # tag: ${{ steps.date.outputs.date }}
-        tag: $env.NOW
+        tag: ${{ github.run_number }}
