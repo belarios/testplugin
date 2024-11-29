@@ -54,6 +54,7 @@ jobs:
       with:
         name: "EQ_ACT_Plugin.dll.zip"
         path: "D:\\bin\\EQ_ACT_Plugin.dll"
+        retention-days: 3
 
     # - name: Publish
     #   uses: ncipollo/release-action@v1
