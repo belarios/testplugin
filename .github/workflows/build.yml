@@ -33,7 +33,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v2
 
     - name: Create Directory
       run: New-Item -Path 'D:\\ACTv3' -ItemType Directory -Force
@@ -43,9 +43,6 @@ jobs:
 
     - name: Unzip ACT
       run: Expand-Archive 'D:\\ACTv3\\ACTv3.zip' -DestinationPath 'D:\\ACTv3\\' -Force
-      
-    - name: check
-      run: dir D:\\ACTv3\\
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
