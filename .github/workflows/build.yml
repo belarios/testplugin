@@ -11,25 +11,29 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  # Path to the solution file relative to the root of the project.
-  SOLUTION_FILE_PATH: .
-  
-  TEST_SOLUTION_FILE_PATH: .
-
-  # Configuration type to build.
-  # You can convert this to a build matrix if you need coverage of multiple configuration types.
-  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
-  BUILD_CONFIGURATION: Release
-  
-  GH_TOKEN: ${{ github.token }}
 
 permissions:
   contents: write
 
 jobs:
   build:
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+
     runs-on: windows-latest
+
+    env:
+      # Path to the solution file relative to the root of the project.
+      SOLUTION_FILE_PATH: .
+
+      # Configuration type to build.
+      # You can convert this to a build matrix if you need coverage of multiple configuration types.
+      # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+      BUILD_CONFIGURATION: ${{matrix.configuration}}
+
+      # Used for releases
+      GH_TOKEN: ${{ github.token }}
 
     steps:
     - uses: actions/checkout@v4
@@ -37,7 +41,7 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
 
-    - name: Create Directory
+    - name: Create ACT Directory
       run: New-Item -Path 'D:\\ACTv3' -ItemType Directory -Force
 
     - name: Download ACT
@@ -51,24 +55,19 @@ jobs:
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} /p:OutputPath=D:\bin
 
-    - name: Build
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.TEST_SOLUTION_FILE_PATH}} /p:OutputPath=D:\testbin
+    # - name: Upload
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: "EQ_ACT_Plugin.dll.zip"
+    #     path: "D:\\bin\\EQ_ACT_Plugin.dll"
+    #     retention-days: 3
 
-    - name: Upload
-      uses: actions/upload-artifact@v4
-      with:
-        name: "EQ_ACT_Plugin.dll.zip"
-        path: "D:\\bin\\EQ_ACT_Plugin.dll"
-        retention-days: 3
-
-    - name: Upload Test
-      uses: actions/upload-artifact@v4
-      with:
-        name: "EQ_ACT_Plugin_DEBUG.dll.zip"
-        path: "D:\\testbin\\EQ_ACT_Plugin.dll"
-        retention-days: 3
+    # - name: Upload Test
+    #   uses: actions/upload-artifact@v4
+    #   with:
+    #     name: "EQ_ACT_Plugin_DEBUG.dll.zip"
+    #     path: "D:\\testbin\\EQ_ACT_Plugin.dll"
+    #     retention-days: 3
 
 
     # - name: Publish
