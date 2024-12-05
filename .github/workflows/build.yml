@@ -7,9 +7,9 @@ name: MSBuild
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, ziryth ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main, ziryth ]
 
 
 permissions:
